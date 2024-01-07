@@ -3,7 +3,11 @@
 {% block content %}
 <div class="grid grid-cols-5 gap-6">
     <div class="col-span-3">
-        <img src="{{ item.image.url }}" class="rounded-xl" alt="">
+        <img src="{% if item.image %}
+        <img src="{{ item.image.url }}" class="rounded-t-xl" alt="">
+    {% else %}
+        <p>No image available</p>
+    {% endif %}" class="rounded-xl" alt="">
     </div>  
       <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
         <h2 class="mb-6 text-3xl">{{ item.name }}</h2>
