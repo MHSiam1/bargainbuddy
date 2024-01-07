@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% block title %} Details {% endblock %}
+{% block content %}
+<div class="grid grid-cols-5 gap-6">
+    <div class="col-span-3">
+        <img src="{{ item.image.url }}" class="rounded-xl" alt="">
+    </div>  
+      <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h2 class="mb-6 text-3xl">{{ item.name }}</h2>
+        <p class="text-gray-500"><b> Description :</b>  {{ item.description }}</p>
+        <p class="text-gray-500"><b> Cupon : </b> {{ item.cupon_code }}</p>
+        <p class="text-gray-500"><b> Published Date :</b>  {{ item.Published_On }}</p>
+        <p class="text-gray-500"><b> Valid Until :</b>  {{ item.Validity }}</p>
+        <p class="text-gray-500"><b> Offerd By :</b>  {{ item.created_by }}</p>
+        
+        <div class="mt-6"><a href="/" class="inline-block px-6 py-3 mt-6 text-m font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Author</a></div>
+    </div>
+</div>
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Related Items</h2>
+
+    <div class="grid grid-cols-3 gap-3">
+        {% for item in related_items %}
+        <div>
+            <a href="{% url 'item:detail' item.id %}">
+                <div>
+                    <img src="{{ item.image.url }}" class="rounded-t-xl" alt="">
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{ item.name }}</h2>
+                    <p class="text-gray-500">Published Date : {{ item.Published_On }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %} 
+    </div>
+ </div>
+{% endblock %}

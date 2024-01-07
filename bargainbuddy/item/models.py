@@ -17,7 +17,7 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     cupon_code = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='items-images', blank=True, null= True)
+    image = models.ImageField(upload_to='items-images/', blank=True, null= True)
     Published_On = models.DateTimeField(auto_now_add=True)
     Validity = models.DateTimeField()
     created_by = models.ForeignKey(User, related_name ='items', on_delete = models.CASCADE)
