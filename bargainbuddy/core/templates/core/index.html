@@ -1,15 +1,29 @@
 {% extends 'core/base.html'  %}
 
 {% block title %} Welcome {% endblock %}
-{% block content %}
- <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">On Going Best Deal</h2>
 
-    <div class="grid grid-cols-3 gap-3">
+{% block content %}
+ {% comment %} <div class="mt-6 px-6 py-16 bg-gray-100 rounded-xl" id="going-best-deal"> {% endcomment %}
+<div id="center">
+    <div id="left">
+        <h3>"Discover exclusive discounts on a variety of products and services. Save money with our curated deals on your favorite items."</h3>
+    </div>
+    <div id="right">
+        <h1>VOUCHER <br>
+              CUPON<br>
+            CASHBACK</h1>
+    </div>
+
+</div>
+ <div id="going-best-deal">
+    {% comment %} <h2 class="mb-12 text-2xl text-center">On Going Best Deal</h2> {% endcomment %}
+    <h2 class="best-deal">On Going Best Deal</h2>
+
+    <div class="grid grid-cols-3 px-4 py-4 gap-3">
         {% for item in items %}
         <div>
             <a href="{% url 'item:detail' item.id %}">
-                <div>
+                <div id="imagesmain">
                     {% if item.image %}
                         <img src="{{ item.image.url }}" class="rounded-t-xl" alt="">
                     {% else %}
@@ -27,8 +41,32 @@
         {% endfor %} 
     </div>
  </div>
- <div class='metadata'> Hello World</div>
- <button onclick="showAlert()">Click me to show alert</button>
+ <div id="moving-text">
+    <div class="con">
+        <h1>DISCOUNT</h1>
+        <div id="gola"></div>
+        <h1>CUPON CODE</h1>
+        <div id="gola"></div>
+        <h1>VOUCHER</h1>
+        <div id="gola"></div>
+    </div>
+    <div class="con">
+        <h1>DISCOUNT</h1>
+        <div id="gola"></div>
+        <h1>CUPON CODE</h1>
+        <div id="gola"></div>
+        <h1>VOUCHER</h1>
+        <div id="gola"></div>
+    </div>
+    <div class="con">
+        <h1>DISCOUNT</h1>
+        <div id="gola"></div>
+        <h1>CUPON CODE</h1>
+        <div id="gola"></div>
+        <h1>VOUCHER</h1>
+        <div id="gola"></div>
+    </div>
+</div>
  <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Available Categories</h2>
 
