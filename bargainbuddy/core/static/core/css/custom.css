@@ -6,13 +6,13 @@ box-sizing: border-box;
 }
 #nav{
     position: fixed;
-    z-index: 10;
+    z-index: 101;
     width: 100%;
     padding: 0px 2.6vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #F3F4F6;
+    background-color: #f3f4f656;
 }
 #center {
     height: 83vh;
@@ -31,10 +31,20 @@ box-sizing: border-box;
     line-height: 2vw;
 }
 
-#center h1 {
+/* #center h1 {
+
+} */
+#right{
     font-size: 10vw;
     text-align: right;
-    line-height: 8vw;
+    line-height: 4.9vw;  
+    letter-spacing: -4px;
+    color: black;
+}
+#right:hover{
+    color: transparent;
+    -webkit-text-stroke: 1px #111111;
+   
 }
 #nav a h3 img{
     margin-top: -15px;
@@ -42,15 +52,7 @@ box-sizing: border-box;
    width: 10vw;
    object-fit: cover;
    margin-bottom: -15px;
-   
 }
-
-/* #nav .nlink:hover{
-   transform: translate(2px, 2px);
-   text-decoration: underline;
-   color: #000;
-   
-} */
 #nav .right {
     display: flex;
     align-items: center;
@@ -61,19 +63,8 @@ box-sizing: border-box;
     
     text-decoration: none;
     font-weight: 400;
-    font-size: 1.5vw;
+    font-size: 1.1vw;
     color: rgb(0, 0, 0);
-}
-#nav .right a::after{
-    
-   content: "";
-   position: absolute;
-   left: 0;
-   bottom:0;
-   height: 3px;
-   width: 0%;
-   background-color: #000;
-
 }
 #nav .right a i {
     margin-top: 10px;
@@ -105,12 +96,6 @@ box-sizing: border-box;
     padding-top: 7vw;
     padding-bottom: 5vw;
 }
-/* #imagesmain{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-} */
 #footer-maindiv{
     min-height: 100vw;
     width: 98.5vw;
@@ -243,7 +228,7 @@ height: 100%;
     background-color: rgb(255, 51, 0);
 }
 .bargainbuddy{
-    padding: 4vw .5vw;
+    padding: 2.5vw .5vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -252,7 +237,7 @@ height: 100%;
     
 }
 .bargainbuddy h1{
-    font-size: 12vw;
+    font-size: 14vw;
     font-weight: 600;
     color: transparent;
     -webkit-text-stroke: 1px #ffffff;
@@ -268,11 +253,12 @@ height: 100%;
     justify-content: center;
     background-color: #262626;
     color: #fff;
-    padding:3vw 1vw;
+    padding:1vw 1vw;
 }
 .copyright>h2{
     font-size: 1vw;
     font-weight: 100;
+    padding-bottom: 2vw;
 }
 #page2 {
     min-height: 100vh;
