@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
-{% block title %} Details {% endblock %}
+
+{% block title %} {{item.name}} {% endblock %}
+
 {% block content %}
 <div class="grid grid-cols-5 gap-6 ">
     <div class="col-span-3">
@@ -17,35 +19,20 @@
         <p class="text-gray-500"><b> Valid Until :</b>  {{ item.Validity }}</p>
         <p class="text-gray-500"><b> Offerd By :</b>  {{ item.created_by }}</p>
         
+      {% if request.user == item.created_by %}
+      <div class="mt-6 p-6 bg-white rounded-xl">
+        <p>This is your item!</p>
+        
+        <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Edit</a>
+        <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-teal-700">Delete</a>
+    </div>
+
+      {% else %}  
         <div class="mt-6"><a href="/" class="inline-block px-6 py-3 mt-6 text-m font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Author</a></div>
+      {% endif %}
     </div>
 </div>
-<div id="moving-text">
-    <div class="con">
-        <h1>DISCOUNT</h1>
-        <div id="gola"></div>
-        <h1>CUPON CODE</h1>
-        <div id="gola"></div>
-        <h1>VOUCHER</h1>
-        <div id="gola"></div>
-    </div>
-    <div class="con">
-        <h1>DISCOUNT</h1>
-        <div id="gola"></div>
-        <h1>CUPON CODE</h1>
-        <div id="gola"></div>
-        <h1>VOUCHER</h1>
-        <div id="gola"></div>
-    </div>
-    <div class="con">
-        <h1>DISCOUNT</h1>
-        <div id="gola"></div>
-        <h1>CUPON CODE</h1>
-        <div id="gola"></div>
-        <h1>VOUCHER</h1>
-        <div id="gola"></div>
-    </div>
-</div>
+
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Related Items</h2>
 

@@ -1,45 +1,28 @@
-function locomotiveAnimation() {
-    gsap.registerPlugin(ScrollTrigger);
-  
-    // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-  
-    const locoScroll = new LocomotiveScroll({
-      el: document.querySelector("#main"),
-      smooth: true,
-    });
-    // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-    locoScroll.on("scroll", ScrollTrigger.update);
-  
-    // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-    ScrollTrigger.scrollerProxy("#main", {
-      scrollTop(value) {
-        return arguments.length
-          ? locoScroll.scrollTo(value, 0, 0)
-          : locoScroll.scroll.instance.scroll.y;
-      }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-      pinType: document.querySelector("#main").style.transform
-        ? "transform"
-        : "fixed",
-    });
-  
-    // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
-    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-  
-    // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-    ScrollTrigger.refresh();
-  }
-  locomotiveAnimation();
 Shery.mouseFollower();
 Shery.makeMagnet(".magnet");
+
+function loaderPart() {
+  var timeline = gsap.timeline()
+timeline.from("#loader h2", {
+x:90,
+opacity:0,
+duration:2,
+stagger:0.1
+})
+timeline.to("#loader h2", {
+x:-90,
+opacity:0,
+duration:1,
+stagger:0.1
+})
+timeline.to("#loader", {
+opacity:0
+})
+timeline.to("#loader", {
+display:"none"
+})
+}
+loaderPart()
 Shery.hoverWithMediaCircle(".hvr" , {
   videos: ["https://media.istockphoto.com/id/473073037/video/coupon-savings.mp4?s=mp4-640x640-is&k=20&c=p9RSwcqQ4qjLuPDJwvUYXKr91_PXjhstzB-PCrcs_co="],
 });
@@ -48,53 +31,27 @@ Shery.hoverWithMediaCircle(".hvr" , {
 //     "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600", 
 //    "https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=600"],
 // });
-function loaderPart() {
-    var timeline = gsap.timeline()
-timeline.from("#loader h2", {
-  x:90,
-  opacity:0,
-  duration:2,
-  stagger:0.1
-})
-timeline.to("#loader h2", {
-  x:-90,
-  opacity:0,
-  duration:1,
-  stagger:0.1
-})
-timeline.to("#loader", {
-  opacity:0
-})
-timeline.to("#loader", {
-  display:"none"
-})
-}
-loaderPart()
 function loadinganimation() {
     gsap.from("#right h1", {
       y: -150,
       opacity: 0,
-      delay: 5.5,
+      delay: 4,
       duration: 0.9,
       stagger: 0.3,
     })};
- loadinganimation();
+loadinganimation();
 function loadinganimation2() {
     gsap.from("#left h3", {
       y: 150,
       opacity: 1,
-      delay: 4.5,
+      delay: 5,
       duration: 1.5,
       stagger: 0.3,
     })};
  loadinganimation2(); 
-
-function navanimation() {
-gsap.from(".right a", {
-    x: -150,
-    opacity: 1,
-    delay: 3.5,
-    duration: 1.2,
-    stagger: 0.3,
-})};
- navanimation();
+ Shery.imageEffect("#fimgs", {
+  style:5,
+  gooey:true,
+  config: {"a":{"value":0.23,"range":[0,30]},"b":{"value":0.75,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":1.707887201195219},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1,"range":[0.1,5]},"durationIn":{"value":1.5,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":false},"maskVal":{"value":1,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.2,"range":[0,10]},"metaball":{"value":0.2,"range":[0,2],"_gsap":{"id":8}},"discard_threshold":{"value":0.54,"range":[0,1]},"antialias_threshold":{"value":0,"range":[0,0.1]},"noise_height":{"value":0.5,"range":[0,2]},"noise_scale":{"value":10,"range":[0,100]}}
+  
+})
