@@ -22,7 +22,7 @@
        
       <div class="right">
         <a class="nlink magnet" href="{% url 'item:new' %}">new item</a>
-        <a class="nlink magnet" href="/">browse</a>
+        <a class="nlink magnet" href="{% url 'item:items' %}">browse</a>
 
         {% if request.user.is_authenticated %}
 
