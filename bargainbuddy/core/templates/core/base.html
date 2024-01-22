@@ -27,7 +27,12 @@
         {% if request.user.is_authenticated %}
 
         <a class="nlink magnet" href="{% url 'conversation:inbox' %}">inbox</a>         
-        <a class="nlink magnet" href="{% url 'dashboard:index' %}">dashboard</a>  
+        <a class="nlink magnet" href="{% url 'dashboard:index' %}">dashboard</a>
+        <form method="post" action="{% url 'core:logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="nlink magnet">Logout</button>
+      </form>
+          
         {% else %}
         <a class="nlink magnet" href="{% url 'core:login' %}">log in</a>           
         <a class="nlink magnet" href="{% url 'core:signup' %}">sing up</a>  

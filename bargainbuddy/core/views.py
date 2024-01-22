@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth import logout
+from django.views.decorators.http import require_POST
 from item.models import Category, Item
 from .forms import SignupForm
 
@@ -14,6 +15,13 @@ def index(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
+
+def custom_logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('core:index') 
+    else:
+        return redirect('core:index')
 
 def signup(request):
     if request.method == 'POST':
