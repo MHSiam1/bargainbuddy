@@ -26,11 +26,6 @@ loaderPart()
 Shery.hoverWithMediaCircle(".hvr" , {
   videos: ["https://media.istockphoto.com/id/473073037/video/coupon-savings.mp4?s=mp4-640x640-is&k=20&c=p9RSwcqQ4qjLuPDJwvUYXKr91_PXjhstzB-PCrcs_co="],
 });
-// Shery.hoverWithMediaCircle(".hvr2" , {
-//     images: ["https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&w=600",    "https://images.pexels.com/photos/5905706/pexels-photo-5905706.jpeg?auto=compress&cs=tinysrgb&w=600",
-//     "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600", 
-//    "https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=600"],
-// });
 function loadinganimation() {
     gsap.from("#right h1", {
       y: -150,
