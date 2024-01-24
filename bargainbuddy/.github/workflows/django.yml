@@ -22,11 +22,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
-      working-directory: burgainbuddy
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      working-directory: / app
       run: |
-        python src/bargainbuddy/manage.py test
+        python manage.py test
