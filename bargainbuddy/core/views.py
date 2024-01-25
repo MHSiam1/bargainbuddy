@@ -19,19 +19,17 @@ def contact(request):
 def custom_logout(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('core:index') 
+        return redirect('core:index')
     else:
         return redirect('core:index')
 
 def signup(request):
     if request.method == 'POST':
-        form = SignupForm()
         form = SignupForm(request.POST)
 
         if form.is_valid():
             form.save()
-
-            return redirect('/login/')
+            return redirect('login')  # Assuming your login URL is named 'login'
     else:
         form = SignupForm()
 
