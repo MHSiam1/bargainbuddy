@@ -29,7 +29,7 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-            return redirect('login')  # Assuming your login URL is named 'login'
+            return redirect('core/login.html')  
     else:
         form = SignupForm()
 

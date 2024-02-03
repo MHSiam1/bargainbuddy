@@ -1,10 +1,15 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
+
 from .forms import NewItemForm, EditItemForm
-# EditItemForm
 from .models import Category, Item
+
+def is_admin(user):
+    return user.is_authenticated and user.is_staff
+
+
 def items(request):
     query = request.GET.get('query', '')
     category_id = request.GET.get('category', 0)
@@ -15,7 +20,7 @@ def items(request):
      items = items.filter(category_id=category_id) 
      
     if query:
-     items = items.filter(Q(name__icontains=query) |Q(description__icontains=query))
+     items = items.filter(Q(name_icontains=query) |Q(description_icontains=query))
     return render(request, 'item/items.html', {
         'items': items,
         'query':query,
@@ -39,6 +44,7 @@ def new(request):
         if form.is_valid():
             item = form.save(commit=False)
             item.created_by = request.user
+            item.approval_status = Item.ApprovalStatus.PENDING
             item.save()
 
             return redirect('item:detail', pk=item.id)
@@ -51,6 +57,7 @@ def new(request):
     })
 
 @login_required
+@user_passes_test(is_admin)
 def edit(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
 
@@ -69,6 +76,7 @@ def edit(request, pk):
         'title': 'Edit item',
     })
 @login_required
+@user_passes_test(is_admin)
 def delete(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
     item.delete()
